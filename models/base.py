@@ -5,9 +5,6 @@ class TimestampMixin(Model):
     create_time = fields.DatetimeField(auto_now_add=True, description="创建时间")
     update_time = fields.DatetimeField(auto_now=True, description="更新时间")
 
-    class Meta:
-        table = None
-
 
 class Role(TimestampMixin):
     role_name = fields.CharField(max_length=15, description="角色名称")
@@ -69,3 +66,26 @@ class AccessLog(TimestampMixin):
     class Meta:
         table_description = "用户操作记录表"
         table = "access_log"
+
+
+class Token(Model):
+    uid = fields.IntField(null=False, description="用户id")
+    created_at = fields.DatetimeField(auto_now_add=True, description="创建时间")
+    updated_at = fields.DatetimeField(auto_now=True, description="更新时间")
+    token = fields.CharField(max_length=60, description="token值", null=False)
+    ip = fields.CharField(max_length=30, null=False, description="用户ip")
+    client_md5 = fields.CharField(max_length=32, null=False, description="客户端信息md5")
+
+    class Meta:
+        table = "tbl_token"
+
+# CREATE TABLE `tbl_token` (
+#   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+#   `uid` int(10) unsigned NOT NULL COMMENT '用户id',
+#   `created_at` datetime NOT NULL COMMENT '创建时间',
+#   `updated_at` datetime NOT NULL,
+#   `token` char(60) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'token值',
+#   `ip` char(30) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '用户ip',
+#   `client_md5` char(32) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '客户端信息md5',
+#   PRIMARY KEY (`id`) USING BTREE
+# ) ENGINE=InnoDB AUTO_INCREMENT=1582 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci

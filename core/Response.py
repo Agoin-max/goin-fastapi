@@ -15,9 +15,9 @@ def base_response(code, msg, data=None):
 
 def success(data=None, msg=''):
     """成功返回格式"""
-    return base_response(200, msg, data)
+    return base_response(0, msg, data)
 
 
-def fail(code=-1, msg='', data=None):
+def fail(code=1, msg='', data=None):
     """失败返回格式"""
     return base_response(code, msg, data)

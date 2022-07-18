@@ -1,0 +1,10 @@
+version: "3"
+services:
+  python-image:
+    build: .
+    container_name: "nebula-web-fastapi"
+    restart: always
+    ports:
+      - "9000:8000"
+    volumes:
+      - .:/src/

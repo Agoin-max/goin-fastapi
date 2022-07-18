@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="nebula@localhost" uuid="5b853580-ff3d-4590-b578-a6c11673f309">
+    <data-source source="LOCAL" name="nebula-dev" uuid="003c953d-1629-4308-8b06-c52f89c51c3b">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/nebula</jdbc-url>
+      <jdbc-url>jdbc:mysql://nebula-database.cectwbqueqym.rds.cn-north-1.amazonaws.com.cn:3306/nebula.site</jdbc-url>
     </data-source>
   </component>
 </project>

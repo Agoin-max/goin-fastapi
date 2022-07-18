@@ -43,12 +43,12 @@ app.include_router(All_Router)
 
 # 中间件
 app.add_middleware(Middleware)
-# app.add_middleware(
-#     SessionMiddleware,
-#     secret_key=settings.SECRET_KEY,
-#     session_cookie=settings.SESSION_COOKIE,
-#     max_age=settings.SESSION_MAX_AGE
-# )
+app.add_middleware(
+    SessionMiddleware,
+    secret_key=settings.SECRET_KEY,
+    session_cookie=settings.SESSION_COOKIE,
+    max_age=settings.SESSION_MAX_AGE
+)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.CORS_ORIGINS,
