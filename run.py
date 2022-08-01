@@ -21,7 +21,9 @@ app = FastAPI(
     debug=settings.APP_DEBUG,
     description=settings.DESCRIPTION,
     version=settings.VERSION,
-    title=settings.PROJECT_NAME
+    title=settings.PROJECT_NAME,
+    docs_url="/python/docs",
+    openapi_url="/python/openapi.json"
 )
 
 # 事件监听

@@ -1,10 +1,9 @@
-version: "3"
+version: "0.0.1"
 services:
-  python-image:
+  core_api:
     build: .
-    container_name: "nebula-web-fastapi"
-    restart: always
+    container_name: "core-api-container"
     ports:
-      - "9000:8000"
+      - "9999:8000"
     volumes:
-      - .:/src/
+      - .:/src
