@@ -15,7 +15,7 @@ click-didyoumean==0.3.0
 click-plugins==1.1.1
 click-repl==0.2.0
 cos-python-sdk-v5==1.9.15
-crcmod==1.7
+# crcmod==1.7
 cryptography==3.4.8
 Deprecated==1.2.13
 dicttoxml==1.7.4
