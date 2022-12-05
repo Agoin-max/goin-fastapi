@@ -14,8 +14,8 @@ class Config(BaseSettings):
     APP_DEBUG: bool = True
     # 项目信息
     VERSION: str = "0.0.1"
-    PROJECT_NAME: str = "Nebula-Web-FastAPI"
-    DESCRIPTION: str = "Nebula-Web-FastAPI"
+    PROJECT_NAME: str = "FastAPI"
+    DESCRIPTION: str = "FastAPI"
     # 静态资源目录
     STATIC_DIR: str = os.path.join(os.getcwd(), "static")
     # 跨域请求

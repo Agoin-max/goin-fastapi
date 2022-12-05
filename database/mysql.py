@@ -3,8 +3,7 @@ from tortoise.contrib.fastapi import register_tortoise
 import os
 
 INSTALLED_APPS = [
-    "models.base",
-    "models.kingdee_models"
+    "models.base"
 ]
 
 DB_ORM_CONFIG = {
