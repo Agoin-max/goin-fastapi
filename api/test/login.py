@@ -1,7 +1,5 @@
 from typing import List
 from pydantic import BaseModel
-
-from core.Exception import TestException
 from models.base import User
 
 

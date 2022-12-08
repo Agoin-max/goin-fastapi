@@ -1,6 +1,6 @@
 # 基本配置文件
 import os.path
-
+import secrets
 from dotenv import load_dotenv, find_dotenv
 from pydantic import BaseSettings
 from typing import List
@@ -36,6 +36,12 @@ class Config(BaseSettings):
         # We recommend adjusting this value in production,
         traces_sample_rate=1.0,
     )
+    # Jwt
+    JWT_SECRET_KEY = secrets.token_urlsafe(32)
+    JWT_ALGORITHM = "HS256"
+    JWT_ACCESS_TOKEN_EXPIRE_MINUTES = 24 * 60
+
+    SWAGGER_UI_OAUTH2_REDIRECT_URL = "/api/v1/admin/access/token"
 
 
 settings = Config()

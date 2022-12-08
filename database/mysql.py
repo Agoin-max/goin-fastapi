@@ -40,7 +40,7 @@ DB_ORM_CONFIG = {
         # }
     },
     "apps": {
-        "default": {"models": INSTALLED_APPS, "default_connection": "default"},
+        "base": {"models": INSTALLED_APPS, "default_connection": "default"},
         # "db2": {"models": ["models.db2"], "default_connection": "db2"},
         # "db3": {"models": ["models.db3"], "default_connection": "db3"},
     },

@@ -1,12 +1,7 @@
 # 入口路由分发
-
-from api.url import Api_Router
+from api.api import api_router
 from fastapi import APIRouter
-from views.Base import View_Router
 
-
-All_Router = APIRouter()
+all_router = APIRouter()
 #  API路由
-All_Router.include_router(Api_Router)
-#  视图路由
-All_Router.include_router(View_Router)
+all_router.include_router(api_router)

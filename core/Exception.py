@@ -64,11 +64,11 @@ async def mysql_does_not_exist(_: Request, exc: DoesNotExist):
 
 
 # 自定义异常 -> 友好提示 -> 异常扩展写法(示例)
-class TestException(UnicornException):
+class UserException(UnicornException):
 
-    def __init__(self, data=None):
+    def __init__(self, data=None, message=""):
         if not data:
             data = {}
         self.code = 10001
-        self.message = "xxx"
+        self.message = message
         self.data = data

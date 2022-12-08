@@ -80,3 +80,4 @@ wechatpy==2.0.0a11
 wrapt==1.14.1
 xmltodict==0.13.0
 arrow==1.2.2
+alembic==1.8.1

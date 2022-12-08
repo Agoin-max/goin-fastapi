@@ -9,7 +9,7 @@ from tortoise.exceptions import DoesNotExist, OperationalError
 
 from config import settings
 from fastapi.staticfiles import StaticFiles
-from core.Router import All_Router
+from core.Router import all_router
 from core.Events import startup, stopping
 from core.Exception import http_error_handler, http422_error_handler, unicorn_exception_handler, UnicornException, \
     mysql_does_not_exist, mysql_operational_error
@@ -22,8 +22,8 @@ app = FastAPI(
     description=settings.DESCRIPTION,
     version=settings.VERSION,
     title=settings.PROJECT_NAME,
-    docs_url="/python/docs",
-    openapi_url="/python/openapi.json"
+    docs_url="/docs",
+    openapi_url="/openapi.json"
 )
 
 # 事件监听
@@ -41,7 +41,7 @@ app.add_exception_handler(OperationalError, mysql_operational_error)
 SentryAsgiMiddleware(app)
 
 # 路由
-app.include_router(All_Router)
+app.include_router(all_router)
 
 # 中间件
 app.add_middleware(Middleware)

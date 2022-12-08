@@ -45,3 +45,16 @@ async def test_query():
     return success(data=get_pagination(sql, tol_sql))
 
     # return success(data=data)
+
+
+from typing import TypeVar
+
+T = TypeVar('T', bound = [str])
+
+
+def func(value: T) -> T:
+    return value
+
+
+result = func("1")
+print(result)
