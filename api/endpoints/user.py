@@ -276,7 +276,7 @@ async def avatar_upload(req: Request, avatar: UploadFile = File(...)):
     # 文件存储路径
     path = f"{settings.STATIC_DIR}/upload/avatar"
     start = time.time()
-    filename = random_str() + '.' + avatar.filename.split(".")[1]
+    filename = random_str() + '.' + avatar.filename.split(".")[-1]
     try:
         if not os.path.isdir(path):
             os.makedirs(path, 0o777)

@@ -1,3 +1,5 @@
+from tortoise import Tortoise
+
 from database.session import MysqlConnection
 from collections import OrderedDict
 
@@ -84,3 +86,37 @@ def get_pagination(sql, total_sql, order_by='', page=1, pagesize=20, params=None
         ('pagesize', pagesize),
         ('records', results),
     ])
+
+
+async def async_select_dic(sql, params=None, cur_one=False):
+    db = Tortoise.get_connection("default")
+    if cur_one:
+        res = await db.execute_query_dict(sql, params)
+        if res:
+            return res[0]
+        else:
+            return {}
+    return await db.execute_query_dict(sql, params)
+
+
+async def async_select_pagination(sql, total_sql, order_by='', page=1, pagesize=20, params=None):
+    if not isinstance(page, int) or not isinstance(pagesize, int):
+        page = int(page)
+        pagesize = int(pagesize)
+    if order_by:
+        sql += " order by {order_by} ".format(order_by=order_by)
+    sql += " limit {start}, {pagesize} ".format(start=(page - 1) * pagesize, pagesize=pagesize)
+    results = await async_select_dic(sql, params=params)
+    count = await async_select_dic(total_sql, params=params, cur_one=True)
+
+    return OrderedDict([
+        ('count', count['count']),
+        ('pagenum', page),
+        ('pagesize', pagesize),
+        ('records', results),
+    ])
+
+
+async def async_insert(sql, params):
+    db = Tortoise.get_connection("default")
+    return await db.execute_insert(sql, params)

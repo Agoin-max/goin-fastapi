@@ -44,4 +44,5 @@ class Config(BaseSettings):
     SWAGGER_UI_OAUTH2_REDIRECT_URL = "/api/v1/admin/access/token"
 
 
+# 单例模式
 settings = Config()

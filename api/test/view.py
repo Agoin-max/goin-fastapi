@@ -1,15 +1,16 @@
-from fastapi import Depends, Request
+from fastapi import Depends, Request, APIRouter
 
 from core.Response import success
 from curd.query import select_dict, select_list, sql_execute, get_pagination
 from database.redis import sys_cache
 from aioredis import Redis
 from core.Logger import logger
+from models.base import User
+
+router = APIRouter(prefix="/test")
 
 
 # 方式一
-
-
 async def test_redis_depends(today: int, cache: Redis = Depends(sys_cache)):
     # 连接池 - 依赖注入
     await cache.set("Goin", today, ex=300)
@@ -22,11 +23,6 @@ async def test_redis(req: Request):
     # 连接池放在request
     value = await req.app.state.cache.get("Goin")
     return value
-
-
-async def test_log():
-    logger.info("日志测试")
-    return success(msg="日志输出")
 
 
 async def test_query():
@@ -47,14 +43,6 @@ async def test_query():
     # return success(data=data)
 
 
-from typing import TypeVar
-
-T = TypeVar('T', bound = [str])
-
-
-def func(value: T) -> T:
-    return value
-
-
-result = func("1")
-print(result)
+# @router.get("/data", summary="前端测试接口")
+# async def test():
+#     return success(data=await User.all().first())

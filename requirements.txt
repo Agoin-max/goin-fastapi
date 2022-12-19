@@ -81,3 +81,6 @@ wrapt==1.14.1
 xmltodict==0.13.0
 arrow==1.2.2
 alembic==1.8.1
+aerich==0.7.1
+dictdiffer==0.9.0
+tomlkit==0.11.6
